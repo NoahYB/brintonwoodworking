@@ -9,6 +9,18 @@
       name="description"
       content="Custom woodworking, furniture, and cabinetry crafted with precision and passion"
     />
+    <script>
+      (function () {
+        const redirectPath = localStorage.getItem("redirectPath");
+        if (redirectPath) {
+          localStorage.removeItem("redirectPath");
+          const cleanPath = redirectPath.startsWith("/")
+            ? redirectPath
+            : "/" + redirectPath;
+          history.replaceState(null, null, cleanPath);
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
