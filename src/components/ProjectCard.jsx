@@ -1,25 +1,33 @@
-import React from "react";
+import { useState } from "react";
+import ImageSlideshow from "./ImageSlideshow";
 import "../styles/ProjectCard.css";
 
 const ProjectCard = ({ project }) => {
-  const { title, description, image, materials } = project;
+  const [showSlideshow, setShowSlideshow] = useState(false);
+
+  // Adapt to your current project structure
+  const { title, description, image, materials, thumbnailImage } = project;
+
+  // Create temporary image array if missing
+  const images = project.images;
 
   return (
-    <div className="project-card">
-      <div className="project-image">
-        <img src={image} alt={title} />
+    <>
+      <div className="project-card" onClick={() => setShowSlideshow(true)}>
+        <img src={thumbnailImage} alt={title} className="project-thumbnail" />
+        <div className="project-info">
+          <h3>{title}</h3>
+          <p>{description}</p>
+          <div className="view-project">View Project</div>
+        </div>
       </div>
-      <div className="project-info">
-        <h3>{title}</h3>
-        <p>{description}</p>
-        {materials && (
-          <div className="project-materials">
-            <h4>Materials:</h4>
-            <p>{materials}</p>
-          </div>
-        )}
-      </div>
-    </div>
+
+      <ImageSlideshow
+        images={images}
+        isOpen={showSlideshow}
+        onClose={() => setShowSlideshow(false)}
+      />
+    </>
   );
 };
 

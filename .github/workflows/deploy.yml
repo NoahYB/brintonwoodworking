@@ -27,6 +27,13 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Debug build output
+        run: |
+          echo "Listing contents of dist directory:"
+          ls -la dist/
+          echo "Checking for index.html:"
+          cat dist/index.html | grep -i "script\|link"
+
       - name: Add .nojekyll file
         run: touch dist/.nojekyll
 

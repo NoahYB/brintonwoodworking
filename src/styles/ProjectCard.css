@@ -1,14 +1,36 @@
 .project-card {
-  background-color: var(--background);
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 12px var(--shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 3px 10px var(--shadow);
+  background-color: white;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
 }
 
 .project-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px var(--shadow);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.project-thumbnail {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.project-info {
+  padding: 1rem;
+}
+
+.view-project {
+  color: var(--primary);
+  margin-top: 0.5rem;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.project-card:hover .view-project {
+  color: var(--accent);
 }
 
 .project-image {
@@ -25,15 +47,6 @@
 
 .project-card:hover .project-image img {
   transform: scale(1.05);
-}
-
-.project-info {
-  padding: 1.5rem;
-}
-
-.project-info h3 {
-  margin-bottom: 0.75rem;
-  font-size: 1.3rem;
 }
 
 .project-materials {
